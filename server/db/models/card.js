@@ -13,6 +13,32 @@ const Card = db.define('card', {
       max: 14,
     },
   },
+  suit: {
+    type: Sequelize.ENUM(['spade', 'heart', 'diamond', 'club']),
+    allowNull: false,
+  },
+  right: {
+    type: Sequelize.ENUM(['spade', 'heart', 'diamond', 'club']),
+  },
 });
 
-module.exports(Card);
+Card.beforeCreate((card) => {
+  switch (card.suit) {
+    case 'spade':
+      card.right = 'club';
+      break;
+    case 'club':
+      card.right = 'spade';
+      break;
+    case 'heart':
+      card.right = 'diamond';
+      break;
+    case 'diamond':
+      card.right = 'heart';
+      break;
+    default:
+      card.right = null;
+  }
+});
+
+module.exports = Card;
