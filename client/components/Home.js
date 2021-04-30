@@ -28,11 +28,19 @@ class Home extends Component {
       currentStack.length === 4 &&
       !currentStack.find((card) => card.display_name !== 'king')
     ) {
-      return (
-        <div id="lost">
-          <p>Sorry, You Lost!</p>
-        </div>
-      );
+      if (hand.find((card) => card.hidden)) {
+        return (
+          <div id="lost">
+            <p>Sorry, you lost...</p>
+          </div>
+        );
+      } else {
+        return (
+          <div id="won">
+            <p>Congratulations, you won!</p>
+          </div>
+        );
+      }
     }
     return (
       <div>
