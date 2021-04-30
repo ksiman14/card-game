@@ -4,8 +4,13 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import cards from './cards';
 import currentCard from './currentCard';
+import currentStack from './currentStack';
 
-const reducer = combineReducers({ cards, currentCard });
+const reducer = combineReducers({
+  cards,
+  currentCard,
+  currentStack,
+});
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );

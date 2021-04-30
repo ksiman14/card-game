@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { turnOver } from '../store/cards';
+import { setCurrentCard } from '../store/currentCard';
+import { setCurrentStack, removeCard } from '../store/currentStack';
 import Card from './Card';
 
 class CardStack extends Component {
@@ -12,10 +13,55 @@ class CardStack extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const current = this.props.currentCard;
+    const stack = this.props.currentStack;
+    const cards = this.state.cards;
+    if (
+      prevProps.currentStack !== stack &&
+      cards.find((card) => card.id === current.id)
+    ) {
+      if (stack[0] === this.state.cards[0]) {
+        this.setState({
+          cards: stack,
+        });
+      } else {
+        const num = cards.length - 1;
+        this.props.setCurrentCard(cards[num].id);
+      }
+    }
+
+    if (prevProps.currentCard !== current) {
+      if (cards.find((card) => card.id === current.id)) {
+        this.props.setCurrentStack(cards);
+      }
+    }
+  }
+
   handleClick(evt) {
-    // if (this.props.currentCard.display_name === evt.target.innerText) {
-    //   this.props.turnOver()
-    // }
+    if (this.props.currentCard.display_name === evt.target.innerText) {
+      if (
+        this.state.cards.find((card) => card.id === this.props.currentCard.id)
+      ) {
+        const num = this.state.cards.length - 2;
+        const last = this.state.cards[num].id;
+        const revisedCards = this.state.cards.filter(
+          (card) => card.id !== this.props.currentCard.id
+        );
+
+        this.setState({
+          cards: [this.props.currentCard, ...revisedCards],
+        });
+
+        this.props.setCurrentCard(last);
+      } else {
+        this.setState({
+          cards: [this.props.currentCard, ...this.state.cards],
+        });
+
+        this.props.removeCard();
+      }
+    }
   }
 
   render() {
@@ -36,10 +82,13 @@ class CardStack extends Component {
 
 const mapState = (state) => ({
   currentCard: state.currentCard,
+  currentStack: state.currentStack,
 });
 
 const mapDispatch = (dispatch) => ({
-  turnOver: (id) => dispatch(turnOver(id)),
+  setCurrentCard: (id) => dispatch(setCurrentCard(id)),
+  setCurrentStack: (stack) => dispatch(setCurrentStack(stack)),
+  removeCard: () => dispatch(removeCard()),
 });
 
 export default connect(mapState, mapDispatch)(CardStack);

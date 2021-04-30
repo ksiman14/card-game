@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 // auth and api routes
-app.use(session({ secret: 'Shh!', resave: true, saveUninitialized: true }));
+app.use(session({ secret: 'Shh!', resave: false, saveUninitialized: true }));
 app.use('/api', require('./api'));
 
 app.get('/', (req, res) =>

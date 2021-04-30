@@ -24,24 +24,12 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-//api/cards/:id
-router.put('/:id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    if (req.session.hand) {
-      const card = await Card.findByPk(req.params.id);
-      card.hidden = !card.hidden;
-      const hand = req.session.hand.map((elem) => {
-        if (elem.id === card.id) {
-          return card;
-        } else {
-          return elem;
-        }
-      });
-      req.session.hand = hand;
-      res.json(req.session.hand);
-    } else {
-      res.sendStatus(403);
-    }
+    const card = await Card.findByPk(req.params.id);
+    card.hidden = false;
+    req.session.card = card;
+    res.json(req.session.card);
   } catch (err) {
     next(err);
   }

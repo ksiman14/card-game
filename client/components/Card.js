@@ -8,10 +8,19 @@ class Card extends Component {
       ...props.card,
       box: props.box,
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {}
+  componentDidUpdate(prevProps) {
+    const current = this.props.currentCard;
+    if (prevProps.currentCard !== current) {
+      if (current.id == this.state.id) {
+        this.setState({
+          ...this.state,
+          hidden: false,
+        });
+      }
+    }
+  }
 
   render() {
     return (
