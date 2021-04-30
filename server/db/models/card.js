@@ -20,6 +20,7 @@ const Card = db.define('card', {
   right: {
     type: Sequelize.ENUM(['spade', 'heart', 'diamond', 'club']),
   },
+  imageUrl: Sequelize.TEXT,
 });
 
 Card.beforeCreate((card) => {

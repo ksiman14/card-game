@@ -1,7 +1,12 @@
 import React from 'react';
 
 const Navbar = (props) => {
-  return <h5>Hello from the Navbar!</h5>;
+  return (
+    <nav>
+      <p>Let's Play Cards!</p>
+      <button type="button">Deal</button>
+    </nav>
+  );
 };
 
 export default Navbar;

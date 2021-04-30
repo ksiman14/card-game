@@ -4,10 +4,18 @@ const {
 } = require('../db');
 module.exports = router;
 
+//api/cards
 router.get('/', async (req, res, next) => {
   try {
     const cards = await Card.findAll();
-    res.json(cards);
+    const hand = [cards[Math.floor(Math.random() * 52)]];
+    cards.forEach((card) => {
+      if (!hand.includes(card)) {
+        const idx = Math.floor(Math.random() * hand.length);
+        hand.splice(idx, 0, card);
+      }
+    });
+    res.json(hand);
   } catch (err) {
     next(err);
   }

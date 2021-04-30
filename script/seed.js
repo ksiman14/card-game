@@ -2,10 +2,6 @@
 
 const values = [
   {
-    display_name: 'one',
-    value: 1,
-  },
-  {
     display_name: 'two',
     value: 2,
   },
@@ -70,10 +66,26 @@ async function seed() {
 
   const cards = await Promise.all(
     values.map(async (value) => {
-      await Card.create({ ...value, suit: 'heart' });
-      await Card.create({ ...value, suit: 'diamond' });
-      await Card.create({ ...value, suit: 'spade' });
-      await Card.create({ ...value, suit: 'club' });
+      await Card.create({
+        ...value,
+        suit: 'heart',
+        imageUrl: `/cards/${value.value}H`,
+      });
+      await Card.create({
+        ...value,
+        suit: 'diamond',
+        imageUrl: `/cards/${value.value}D`,
+      });
+      await Card.create({
+        ...value,
+        suit: 'spade',
+        imageUrl: `/cards/${value.value}S`,
+      });
+      await Card.create({
+        ...value,
+        suit: 'club',
+        imageUrl: `/cards/${value.value}C`,
+      });
     })
   );
 
