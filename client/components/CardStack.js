@@ -6,9 +6,12 @@ class CardStack extends Component {
     this.state = {
       hidden: 4,
       revealed: 0,
+      cards: props.cards,
     };
   }
+
   render() {
+    console.log(this.state.cards);
     return (
       <div>
         <img className="card" src="/cards/blue_back.png" />

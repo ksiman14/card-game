@@ -47,6 +47,7 @@ nav > button {
 
 .top {
   margin-top: 5px;
+  margin-bottom: -30px;
 }
 
 .end_middle {
@@ -62,6 +63,7 @@ nav > button {
 }
 
 .bottom {
+  margin-top: -30px;
   margin-bottom: 5px;
 }
 
