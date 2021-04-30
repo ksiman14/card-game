@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { dealCards } from '../store/cards';
+import { dealCards, turnOver } from '../store/cards';
 import { setCard } from '../store/currentCard';
 import CardRow from './CardRow';
 
@@ -10,8 +10,10 @@ class Home extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.hand !== this.props.hand) {
+    if (prevProps.hand.length !== this.props.hand.length) {
       this.props.setCard(this.props.hand[27]);
+    } else if (prevProps.currentCard !== this.props.currentCard) {
+      this.props.turnOver(this.props.currentCard.id);
     }
   }
 
@@ -77,6 +79,7 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => ({
   dealCards: () => dispatch(dealCards()),
   setCard: (card) => dispatch(setCard(card)),
+  turnOver: (id) => dispatch(turnOver(id)),
 });
 
 export default connect(mapState, mapDispatch)(Home);

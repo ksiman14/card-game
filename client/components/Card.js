@@ -6,28 +6,12 @@ class Card extends Component {
     super(props);
     this.state = {
       ...props.card,
-      hidden: true,
+      box: props.box,
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.currentCard !== this.props.currentCard) {
-      if (this.props.currentCard.id === this.props.card.id) {
-        this.setState({
-          ...this.state,
-          hidden: false,
-        });
-      }
-    }
-  }
-
-  handleClick() {
-    this.setState({
-      ...this.state,
-      hidden: !this.state.hidden,
-    });
-  }
+  handleClick() {}
 
   render() {
     return (

@@ -83,7 +83,9 @@ button {
   flex-direction: row;
 }
 
-.card_stack > p {
+.card_stack > button {
   align-self: center;
+  font-size: 12px;
   margin-right: 50px;
+  width: 55px;
 }
