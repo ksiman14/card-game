@@ -12,12 +12,9 @@ class Home extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.hand.length !== this.props.hand.length) {
       this.props.setCurrentCard(this.props.hand[27].id);
-    }
-
-    if (prevProps.status !== this.props.status) {
-      this.setState({
-        status: this.props.status,
-      });
+    } else if (prevProps.hand[0].id !== this.props.hand[0].id) {
+      this.props.setCurrentCard(this.props.hand[27].id);
+      this.props.history.push('/');
     }
   }
 

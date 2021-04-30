@@ -18,6 +18,17 @@ export const dealCards = () => {
   };
 };
 
+export const redeal = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put('/api/cards');
+      dispatch(setCards(data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 export default function (state = [], action) {
   switch (action.type) {
     case SET_CARDS:
