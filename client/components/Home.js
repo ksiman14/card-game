@@ -13,10 +13,27 @@ class Home extends Component {
     if (prevProps.hand.length !== this.props.hand.length) {
       this.props.setCurrentCard(this.props.hand[27].id);
     }
+
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status,
+      });
+    }
   }
 
   render() {
     const hand = this.props.hand || [];
+    const currentStack = this.props.currentStack || [];
+    if (
+      currentStack.length === 4 &&
+      !currentStack.find((card) => card.display_name !== 'king')
+    ) {
+      return (
+        <div id="lost">
+          <p>Sorry, You Lost!</p>
+        </div>
+      );
+    }
     return (
       <div>
         {hand.length > 1 ? (
@@ -72,6 +89,7 @@ class Home extends Component {
 const mapState = (state) => ({
   hand: state.cards,
   currentCard: state.currentCard,
+  currentStack: state.currentStack,
 });
 
 const mapDispatch = (dispatch) => ({

@@ -17,6 +17,7 @@ class CardStack extends Component {
     const current = this.props.currentCard;
     const stack = this.props.currentStack;
     const cards = this.state.cards;
+
     if (
       prevProps.currentStack !== stack &&
       cards.find((card) => card.id === current.id)
@@ -67,6 +68,7 @@ class CardStack extends Component {
   render() {
     const cards = this.state.cards;
     const box = this.props.box;
+
     return (
       <div className="card_stack">
         <button type="button" onClick={this.handleClick}>
@@ -83,6 +85,7 @@ class CardStack extends Component {
 const mapState = (state) => ({
   currentCard: state.currentCard,
   currentStack: state.currentStack,
+  status: state.status,
 });
 
 const mapDispatch = (dispatch) => ({
