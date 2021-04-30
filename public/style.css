@@ -1,5 +1,6 @@
 * {
   margin: 0px;
+  padding: 0px;
 }
 
 body {
@@ -12,9 +13,13 @@ a {
 }
 
 nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   font-size: 24px;
-  text-align: center;
   text-decoration: bold;
+  padding-left: 10px;
 }
 
 nav a {
@@ -22,7 +27,7 @@ nav a {
   margin: 1em;
 }
 
-nav > button {
+button {
   background-color: white;
   color: #11151c;
   width: 115px;
@@ -71,4 +76,14 @@ nav > button {
   height: 120px;
   margin-left: -30px;
   margin-right: -30px;
+}
+
+.card_stack {
+  display: flex;
+  flex-direction: row;
+}
+
+.card_stack > p {
+  align-self: center;
+  margin-right: 50px;
 }

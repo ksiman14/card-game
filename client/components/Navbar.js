@@ -3,7 +3,7 @@ import React from 'react';
 const Navbar = (props) => {
   return (
     <nav>
-      <p>Let's Play Cards!</p>
+      <p>Clock Solitaire</p>
       <button type="button">Deal</button>
     </nav>
   );

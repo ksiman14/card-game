@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
+import Card from './Card';
 
 class CardStack extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: 4,
-      revealed: 0,
       cards: props.cards,
     };
   }
 
   render() {
-    console.log(this.state.cards);
+    const cards = this.state.cards;
     return (
-      <div>
-        <img className="card" src="/cards/blue_back.png" />
-        <img className="card" src="/cards/blue_back.png" />
-        <img className="card" src="/cards/blue_back.png" />
-        <img className="card" src="/cards/blue_back.png" />
+      <div className="card_stack">
+        <p>{this.props.box}</p>
+        {cards.map((card) => (
+          <Card key={card.id} card={card} />
+        ))}
       </div>
     );
   }
