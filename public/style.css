@@ -192,6 +192,9 @@ button {
 }
 
 #lost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 24px;
   color: #5b616a;
   text-align: center;
@@ -199,9 +202,25 @@ button {
   padding-top: 30px;
 }
 
+#lost > img {
+  height: 10%;
+  margin: 20px;
+}
+
 #lost > button {
   background-color: #275dad;
   color: #ffffff;
+}
+
+#won {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+  color: #5b616a;
+  text-align: center;
+  text-decoration: bold;
+  padding-top: 30px;
 }
 
 #won > button {
