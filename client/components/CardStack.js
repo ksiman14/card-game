@@ -30,6 +30,7 @@ class CardStack extends Component {
         });
       } else {
         const num = cards.length - 1;
+
         this.props.setCurrentCard(cards[num].id);
       }
     }
@@ -41,41 +42,84 @@ class CardStack extends Component {
     }
   }
 
-  handleClick() {
+  handleClick(evt) {
     const num = this.state.cards.length - 1;
     const last = this.state.cards[num - 1].id;
+    const id = this.props.currentCard.id;
     const name = this.props.currentCard.display_name;
 
     if (name === this.props.box) {
-      const next = document.querySelectorAll('.' + name)[num];
-      const deg = turn(next);
+      const current = document.getElementById(id);
 
       anime({
-        targets: next,
-        rotate: deg,
-        rotateY: 360,
-        duration: 150,
+        targets: current,
+        easing: 'linear',
+        opacity: 0,
+        duration: 300,
       });
-      if (
-        this.state.cards.find((card) => card.id === this.props.currentCard.id)
-      ) {
-        const revisedCards = this.state.cards.filter(
-          (card) => card.id !== this.props.currentCard.id
-        );
 
-        this.setState({
-          cards: [this.props.currentCard, ...revisedCards],
-        });
-        //ANIMATE??
-        this.props.setCurrentCard(last);
-      } else {
-        //ANIMATE??
-        this.setState({
-          cards: [this.props.currentCard, ...this.state.cards],
-        });
-        //ANIMATE??
-        this.props.removeCard();
-      }
+      setTimeout(
+        function () {
+          if (
+            this.state.cards.find(
+              (card) => card.id === this.props.currentCard.id
+            )
+          ) {
+            const revisedCards = this.state.cards.filter(
+              (card) => card.id !== this.props.currentCard.id
+            );
+
+            this.setState({
+              cards: [this.props.currentCard, ...revisedCards],
+            });
+            const next = document.querySelectorAll('.' + name)[num];
+            const deg = turn(next);
+
+            anime({
+              targets: next,
+              rotate: deg,
+              rotateY: 360,
+              duration: 150,
+            });
+
+            anime({
+              targets: current,
+              easing: 'linear',
+              opacity: 1,
+              duration: 500,
+            });
+
+            this.props.setCurrentCard(last);
+          } else {
+            //ANIMATE??
+            this.setState({
+              cards: [this.props.currentCard, ...this.state.cards],
+            });
+            //ANIMATE??
+            const next = document.querySelectorAll('.' + name)[num + 1];
+            const deg = turn(next);
+
+            anime({
+              targets: next,
+              rotate: deg,
+              rotateY: 360,
+              duration: 150,
+            });
+
+            this.props.removeCard();
+
+            const last = document.getElementById(id);
+            last.style.opacity = '0';
+            anime({
+              targets: last,
+              easing: 'linear',
+              opacity: 1,
+              duration: 500,
+            });
+          }
+        }.bind(this),
+        400
+      );
     }
   }
 
