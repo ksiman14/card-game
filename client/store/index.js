@@ -3,11 +3,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import cards from './cards';
+import color from './color';
 import currentCard from './currentCard';
 import currentStack from './currentStack';
 
 const reducer = combineReducers({
   cards,
+  color,
   currentCard,
   currentStack,
 });

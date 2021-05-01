@@ -8,6 +8,7 @@ class Card extends Component {
       ...props.card,
       box: props.box,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -22,6 +23,16 @@ class Card extends Component {
     }
   }
 
+  handleClick() {
+    const current = this.props.currentCard;
+    if (current.id === this.state.id) {
+      this.setState({
+        ...this.state,
+        hidden: false,
+      });
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -29,9 +40,10 @@ class Card extends Component {
           className={'card ' + this.props.box}
           src={
             this.state.hidden
-              ? '/cards/blue_back.png'
+              ? `/cards/${this.props.color}_back.png`
               : this.state.imageUrl + '.png'
           }
+          onClick={this.handleClick}
         />
       </React.Fragment>
     );
@@ -40,6 +52,7 @@ class Card extends Component {
 
 const mapState = (state) => ({
   currentCard: state.currentCard,
+  color: state.color,
 });
 
 export default connect(mapState, null)(Card);
