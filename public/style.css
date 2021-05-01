@@ -78,7 +78,7 @@ button {
 }
 
 .top {
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: -30px;
 }
 
@@ -194,4 +194,12 @@ button {
 
 #clock {
   height: 200px;
+}
+
+@media only screen and (min-width: 1350px) {
+  .card {
+    height: 125px;
+    margin-left: -32px;
+    margin-right: -32px;
+  }
 }
