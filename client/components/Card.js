@@ -26,13 +26,12 @@ class Card extends Component {
     return (
       <React.Fragment>
         <img
-          className="card"
+          className={'card ' + this.props.box}
           src={
             this.state.hidden
               ? '/cards/blue_back.png'
               : this.state.imageUrl + '.png'
           }
-          onClick={this.handleClick}
         />
       </React.Fragment>
     );

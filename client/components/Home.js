@@ -10,11 +10,16 @@ class Home extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.hand.length !== this.props.hand.length) {
+    if (
+      prevProps.hand.length !== this.props.hand.length &&
+      this.props.hand.length === 52
+    ) {
       this.props.setCurrentCard(this.props.hand[27].id);
-    } else if (prevProps.hand[0].id !== this.props.hand[0].id) {
-      this.props.setCurrentCard(this.props.hand[27].id);
-      this.props.history.push('/');
+    } else if (
+      this.props.hand.length === 52 &&
+      prevProps.hand[0].id !== this.props.hand[0].id
+    ) {
+      this.props.dealCards();
     }
   }
 

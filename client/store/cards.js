@@ -1,10 +1,15 @@
 import axios from 'axios';
 
 const SET_CARDS = 'SET_CARDS';
+const CLEAR_CARDS = 'CLEAR_CARDS';
 
 const setCards = (cards) => ({
   type: SET_CARDS,
   cards,
+});
+
+export const clearCards = () => ({
+  type: CLEAR_CARDS,
 });
 
 export const dealCards = () => {
@@ -33,6 +38,8 @@ export default function (state = [], action) {
   switch (action.type) {
     case SET_CARDS:
       return action.cards;
+    case CLEAR_CARDS:
+      return [];
     default:
       return state;
   }

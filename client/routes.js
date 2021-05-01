@@ -6,7 +6,7 @@ import HowTo from './components/HowTo';
 class Routes extends Component {
   render() {
     return (
-      <div>
+      <div id="game_container">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/home" component={Home} />

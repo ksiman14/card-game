@@ -74,7 +74,7 @@ class CardStack extends Component {
         <button type="button" onClick={this.handleClick}>
           {box}
         </button>
-        {cards.map((card) => (
+        {cards.map((card, i) => (
           <Card key={card.id} card={card} box={box} />
         ))}
       </div>

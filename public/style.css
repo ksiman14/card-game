@@ -8,22 +8,28 @@ body {
   background-color: white;
 }
 
+#main {
+  display: flex;
+  flex-direction: row;
+}
+
 a {
   text-decoration: underline;
 }
 
-nav {
+#nav {
   display: flex;
-  border-bottom: 2px solid black;
-  flex-direction: row;
-  justify-content: space-between;
+  border-right: 2px solid black;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 24px;
+  font-size: 16px;
+  text-align: center;
   text-decoration: bold;
-  padding-left: 10px;
+  padding: 10px 10px;
 }
 
-nav a {
+#nav a {
   display: inline-block;
   margin: 1em;
 }
@@ -31,10 +37,14 @@ nav a {
 button {
   background-color: rgb(85, 140, 212);
   color: white;
-  width: 130px;
-  height: 40px;
-  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
   margin: 10px;
+}
+
+#game_container {
+  flex-basis: 90%;
 }
 
 #table {
@@ -73,7 +83,8 @@ button {
 }
 
 .card {
-  height: 120px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 100px;
   margin-left: -30px;
   margin-right: -30px;
 }
@@ -92,9 +103,49 @@ button {
   width: 55px;
 }
 
+.queen {
+  transform: rotate(-25deg);
+}
+
+.two {
+  transform: rotate(25deg);
+}
+
+.eight {
+  transform: rotate(-155deg);
+}
+
+.six {
+  transform: rotate(155deg);
+}
+
+.jack {
+  transform: rotate(-50deg);
+}
+
+.three {
+  transform: rotate(50deg);
+}
+
+.nine {
+  transform: rotate(-130deg);
+}
+
+.five {
+  transform: rotate(130deg);
+}
+
+.ten {
+  transform: rotate(-90deg);
+}
+
+.four {
+  transform: rotate(90deg);
+}
+
 #lost {
   font-size: 24px;
-  background-color: red;
-  height: 500px;
-  text-align: center;
+  color: red;
+  text-decoration: bold;
+  padding-top: 30px;
 }

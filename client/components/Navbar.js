@@ -1,25 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { redeal } from '../store/cards';
+import { clearCards, redeal } from '../store/cards';
 
 const Navbar = (props) => {
   const handleClick = () => {
+    props.clearCards();
     props.redeal();
   };
   return (
-    <nav>
+    <div id="nav">
       <p>Clock Solitaire</p>
       <Link to="/">Home</Link>
       <Link to="/about">How Do I Play?</Link>
       <button type="button" onClick={handleClick}>
         Deal Again!
       </button>
-    </nav>
+    </div>
   );
 };
 
 const mapDispatch = (dispatch) => ({
+  clearCards: () => dispatch(clearCards()),
   redeal: () => dispatch(redeal()),
 });
 
