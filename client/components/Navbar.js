@@ -15,7 +15,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <div id="nav">
+    <div id="nav" className={props.color}>
       <h1>Clock Solitaire</h1>
       <div id="links">
         <Link to="/">Home</Link>
@@ -32,6 +32,7 @@ const Navbar = (props) => {
 };
 
 const mapState = (state) => ({
+  color: state.color,
   currentStack: state.currentStack,
 });
 

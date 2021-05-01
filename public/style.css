@@ -9,7 +9,7 @@ html {
 
 body {
   color: #5b616a;
-  background-color: #fcf7f8;
+  background-color: #ffffff;
   font-family: 'Josefin Sans', sans-serif;
   height: 100%;
 }
@@ -25,14 +25,13 @@ body {
 }
 
 a {
-  color: #fcf7f8;
+  color: #ffffff;
   text-decoration: none;
   padding-bottom: 20px;
 }
 
 #nav {
-  background-color: #275dad;
-  color: #fcf7f8;
+  color: #ffffff;
   display: flex;
   border-right: 2px solid black;
   flex-direction: column;
@@ -44,15 +43,40 @@ a {
   padding: 10px 10px;
 }
 
+.blue {
+  background-color: #009ddc;
+}
+
+.gray {
+  background-color: #5b616a;
+}
+
+.green {
+  background-color: #4ca43f;
+}
+
+.purple {
+  background-color: #702c8d;
+}
+
+.red {
+  background-color: #d02000;
+}
+
+.yellow {
+  background-color: #fdcd44;
+}
+
 #links {
   display: flex;
   flex-direction: column;
   margin: 1em;
+  cursor: pointer;
 }
 
 button {
   color: black;
-  background-color: #fcf7f8;
+  background-color: #ffffff;
   font-family: 'Josefin Sans', sans-serif;
   width: 120px;
   height: 35px;
@@ -104,6 +128,7 @@ button {
   height: 100px;
   margin-left: -27px;
   margin-right: -27px;
+  cursor: pointer;
 }
 
 .card_stack {
@@ -160,6 +185,12 @@ button {
   transform: rotate(90deg);
 }
 
+.six,
+.queen,
+.king {
+  transform: rotate(0deg);
+}
+
 #lost {
   font-size: 24px;
   color: #5b616a;
@@ -170,12 +201,12 @@ button {
 
 #lost > button {
   background-color: #275dad;
-  color: #fcf7f8;
+  color: #ffffff;
 }
 
 #won > button {
   background-color: #275dad;
-  color: #fcf7f8;
+  color: #ffffff;
 }
 
 #how_to {

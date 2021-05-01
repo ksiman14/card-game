@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const SET_CARDS = 'SET_CARDS';
 const CLEAR_CARDS = 'CLEAR_CARDS';
+const UPDATE_CARDS = 'UPDATE_CARDS';
 
 const setCards = (cards) => ({
   type: SET_CARDS,
@@ -10,6 +11,11 @@ const setCards = (cards) => ({
 
 export const clearCards = () => ({
   type: CLEAR_CARDS,
+});
+
+export const updateCards = (card) => ({
+  type: UPDATE_CARDS,
+  card,
 });
 
 export const dealCards = () => {
@@ -40,6 +46,15 @@ export default function (state = [], action) {
       return action.cards;
     case CLEAR_CARDS:
       return [];
+    case UPDATE_CARDS:
+      const cards = state.map((card) => {
+        if (card.id === action.card.id) {
+          return action.card;
+        } else {
+          return card;
+        }
+      });
+      return cards;
     default:
       return state;
   }

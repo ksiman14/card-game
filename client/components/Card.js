@@ -8,6 +8,7 @@ class Card extends Component {
       ...props.card,
       box: props.box,
     };
+    this.myRef = React.createRef();
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -37,6 +38,7 @@ class Card extends Component {
     return (
       <React.Fragment>
         <img
+          id={this.state.id}
           className={'card ' + this.props.box}
           src={
             this.state.hidden

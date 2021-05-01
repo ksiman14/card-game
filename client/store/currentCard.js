@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { updateCards } from './cards';
 
 const SET_CARD = 'SET_CARD';
 
@@ -12,6 +13,7 @@ export const setCurrentCard = (id) => {
     try {
       const { data } = await axios.get(`/api/cards/${id}`);
       dispatch(setCard(data));
+      dispatch(updateCards(data));
     } catch (err) {
       console.log(err);
     }

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import anime from 'animejs/lib/anime.es';
 import { setCurrentCard } from '../store/currentCard';
 import { setCurrentStack, removeCard } from '../store/currentStack';
+import { turn } from '../animate';
 import Card from './Card';
 
 class CardStack extends Component {
@@ -40,13 +42,23 @@ class CardStack extends Component {
   }
 
   handleClick() {
-    if (this.props.currentCard.display_name === this.props.box) {
-      //ANIMATE??
+    const num = this.state.cards.length - 1;
+    const last = this.state.cards[num - 1].id;
+    const name = this.props.currentCard.display_name;
+
+    if (name === this.props.box) {
+      const next = document.querySelectorAll('.' + name)[num];
+      const deg = turn(next);
+
+      anime({
+        targets: next,
+        rotate: deg,
+        rotateY: 360,
+        duration: 150,
+      });
       if (
         this.state.cards.find((card) => card.id === this.props.currentCard.id)
       ) {
-        const num = this.state.cards.length - 2;
-        const last = this.state.cards[num].id;
         const revisedCards = this.state.cards.filter(
           (card) => card.id !== this.props.currentCard.id
         );
