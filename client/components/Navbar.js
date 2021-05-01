@@ -10,12 +10,16 @@ const Navbar = (props) => {
   };
   return (
     <div id="nav">
-      <p>Clock Solitaire</p>
-      <Link to="/">Home</Link>
-      <Link to="/about">How Do I Play?</Link>
-      <button type="button" onClick={handleClick}>
-        Deal Again!
-      </button>
+      <h1>Clock Solitaire</h1>
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/rules">How Do I Play?</Link>
+      </div>
+      <div>
+        <button type="button" onClick={handleClick}>
+          Deal Again!
+        </button>
+      </div>
     </div>
   );
 };

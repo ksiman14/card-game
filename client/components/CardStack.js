@@ -39,8 +39,8 @@ class CardStack extends Component {
     }
   }
 
-  handleClick(evt) {
-    if (this.props.currentCard.display_name === evt.target.innerText) {
+  handleClick() {
+    if (this.props.currentCard.display_name === this.props.box) {
       if (
         this.state.cards.find((card) => card.id === this.props.currentCard.id)
       ) {
@@ -70,10 +70,7 @@ class CardStack extends Component {
     const box = this.props.box;
 
     return (
-      <div className="card_stack">
-        <button type="button" onClick={this.handleClick}>
-          {box}
-        </button>
+      <div className="card_stack" name={box} onClick={this.handleClick}>
         {cards.map((card, i) => (
           <Card key={card.id} card={card} box={box} />
         ))}

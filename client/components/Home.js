@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { dealCards } from '../store/cards';
+import { dealCards, clearCards, redeal } from '../store/cards';
 import { setCurrentCard } from '../store/currentCard';
+import { clearStack } from '../store/currentStack';
 import CardRow from './CardRow';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   componentDidMount() {
     this.props.dealCards();
   }
@@ -23,6 +29,12 @@ class Home extends Component {
     }
   }
 
+  handleClick() {
+    this.props.clearCards();
+    this.props.clearStack();
+    this.props.redeal();
+  }
+
   render() {
     const hand = this.props.hand || [];
     const currentStack = this.props.currentStack || [];
@@ -34,12 +46,18 @@ class Home extends Component {
         return (
           <div id="lost">
             <p>Sorry, you lost...</p>
+            <button type="button" onClick={this.handleClick}>
+              Play Again!
+            </button>
           </div>
         );
       } else {
         return (
           <div id="won">
             <p>Congratulations, you won!</p>
+            <button type="button" onClick={this.handleClick}>
+              Play Again!
+            </button>
           </div>
         );
       }
@@ -49,22 +67,22 @@ class Home extends Component {
         {hand.length > 1 ? (
           <div id="table">
             <CardRow
-              boxes={['ace']}
+              boxes={['queen']}
               cards={[hand.slice(0, 4)]}
               position="top"
             />
             <CardRow
-              boxes={['queen', 'two']}
+              boxes={['jack', 'ace']}
               cards={[hand.slice(4, 8), hand.slice(8, 12)]}
               position="end_middle"
             />
             <CardRow
-              boxes={['jack', 'three']}
+              boxes={['ten', 'two']}
               cards={[hand.slice(12, 16), hand.slice(16, 20)]}
               position="middle"
             />
             <CardRow
-              boxes={['ten', 'king', 'four']}
+              boxes={['nine', 'king', 'three']}
               cards={[
                 hand.slice(20, 24),
                 hand.slice(24, 28),
@@ -73,17 +91,17 @@ class Home extends Component {
               position="center"
             />
             <CardRow
-              boxes={['nine', 'five']}
+              boxes={['eight', 'four']}
               cards={[hand.slice(32, 36), hand.slice(36, 40)]}
               position="middle"
             />
             <CardRow
-              boxes={['eight', 'six']}
+              boxes={['seven', 'five']}
               cards={[hand.slice(40, 44), hand.slice(44, 48)]}
               position="end_middle"
             />
             <CardRow
-              boxes={['seven']}
+              boxes={['six']}
               cards={[hand.slice(48)]}
               position="bottom"
             />
@@ -103,7 +121,10 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
+  clearCards: () => dispatch(clearCards()),
+  clearStack: () => dispatch(clearStack()),
   dealCards: () => dispatch(dealCards()),
+  redeal: () => dispatch(redeal()),
   setCurrentCard: (id) => dispatch(setCurrentCard(id)),
 });
 
