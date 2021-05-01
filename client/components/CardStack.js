@@ -41,6 +41,7 @@ class CardStack extends Component {
 
   handleClick() {
     if (this.props.currentCard.display_name === this.props.box) {
+      //ANIMATE??
       if (
         this.state.cards.find((card) => card.id === this.props.currentCard.id)
       ) {
@@ -53,13 +54,14 @@ class CardStack extends Component {
         this.setState({
           cards: [this.props.currentCard, ...revisedCards],
         });
-
+        //ANIMATE??
         this.props.setCurrentCard(last);
       } else {
+        //ANIMATE??
         this.setState({
           cards: [this.props.currentCard, ...this.state.cards],
         });
-
+        //ANIMATE??
         this.props.removeCard();
       }
     }
