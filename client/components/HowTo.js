@@ -1,13 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { clearCards } from '../store/cards';
 
 const HowTo = (props) => {
+  props.clearCards();
   return (
     <div id="how_to">
       <h1>How To Play</h1>
       <p>Clock Solitaire is entirely a game of chance!</p>
       <p>
-        Start with the top card in the middle pile. Click on the pile on the
-        "clock" corresponding to that card's value to move it to that pile.
+        Start with the top card in the middle pile. Click on the card pile on
+        the "clock" corresponding to that card's value to move it to that pile.
       </p>
       <img id="clock" src="clock.png" />
       <p>Turn over the top card in the new pile and repeat.</p>
@@ -21,4 +24,8 @@ const HowTo = (props) => {
   );
 };
 
-export default HowTo;
+const mapDispatch = (dispatch) => ({
+  clearCards: () => dispatch(clearCards()),
+});
+
+export default connect(null, mapDispatch)(HowTo);
