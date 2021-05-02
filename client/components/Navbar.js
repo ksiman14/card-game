@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearCards, redeal } from '../store/cards';
 import { changeColor } from '../store/color';
+import Clock from './Clock';
 
 const Navbar = (props) => {
   const handleClick = () => {
@@ -17,6 +18,7 @@ const Navbar = (props) => {
   return (
     <div id="nav" className={props.color}>
       <h1>Clock Solitaire</h1>
+      <Clock />
       <div id="links">
         <Link to="/">Home</Link>
         <Link to="/rules">How Do I Play?</Link>

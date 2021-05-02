@@ -1,5 +1,5 @@
 import React from 'react';
-import anime, { AnimeInstance } from 'animejs/lib/anime.es';
+import anime from 'animejs/lib/anime.es';
 
 const Lost = (props) => {
   const animeRef = React.useRef(null);
