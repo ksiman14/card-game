@@ -10,7 +10,8 @@ const HowTo = (props) => {
       <p>Clock Solitaire is entirely a game of chance!</p>
       <p>
         Start with the top card in the middle pile. Click on the card pile on
-        the "clock" corresponding to that card's value to move it to that pile.
+        the card "clock" corresponding to that card's value to move it to that
+        pile.
       </p>
       <img id="clock" src="clock.png" />
       <p>Turn over the top card in the new pile and repeat.</p>

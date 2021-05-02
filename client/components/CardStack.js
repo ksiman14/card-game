@@ -91,11 +91,10 @@ class CardStack extends Component {
 
             this.props.setCurrentCard(last);
           } else {
-            //ANIMATE??
             this.setState({
               cards: [this.props.currentCard, ...this.state.cards],
             });
-            //ANIMATE??
+
             const next = document.querySelectorAll('.' + name)[num + 1];
             const deg = turn(next);
 
