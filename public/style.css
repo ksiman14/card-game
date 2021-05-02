@@ -203,12 +203,12 @@ button {
 }
 
 #lost > img {
-  height: 10%;
+  height: 300px;
   margin: 20px;
 }
 
 #won > img {
-  height: 10%;
+  height: 300px;
   margin: 20px;
 }
 

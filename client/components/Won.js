@@ -4,22 +4,18 @@ import anime from 'animejs/lib/anime.es';
 const Won = (props) => {
   const animeRef = React.useRef(null);
 
-  const keyframes = {
-    scaleY: [
-      { value: 0.8, duration: 200 },
-      { value: 1, duration: 200, delay: 150 },
-    ],
-    translateY: [
-      { value: -20, duration: 200, delay: 200 },
-      { value: 0, duration: 200, delay: 250 },
-    ],
-  };
-
   React.useEffect(
     () =>
       (animeRef.current = anime({
         targets: '#hug_face',
-        ...keyFrames,
+        scaleY: [
+          { value: 0.8, duration: 200 },
+          { value: 1, duration: 200, delay: 150 },
+        ],
+        translateY: [
+          { value: -20, duration: 200, delay: 200 },
+          { value: 0, duration: 200, delay: 250 },
+        ],
         loop: true,
         easing: 'linear',
       }))
