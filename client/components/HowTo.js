@@ -1,9 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { clearCards } from '../store/cards';
 
 const HowTo = (props) => {
-  props.clearCards();
   return (
     <div id="how_to">
       <h1>How To Play</h1>
@@ -25,8 +22,4 @@ const HowTo = (props) => {
   );
 };
 
-const mapDispatch = (dispatch) => ({
-  clearCards: () => dispatch(clearCards()),
-});
-
-export default connect(null, mapDispatch)(HowTo);
+export default HowTo;

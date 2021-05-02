@@ -16,9 +16,9 @@ const Clock = (props) => {
       targets: '.seconds',
       duration: 300,
       delay: 700,
-      translateX: -0.75,
       rotate: () => (deg += 6),
-      easeing: 'spring(0, 80, 10, 10)',
+      translateX: -0.75,
+      easeing: 'spring(0, 90, 10, 10)',
       complete: tick,
     });
 
@@ -28,8 +28,8 @@ const Clock = (props) => {
         targets: '.seconds',
         duration: 300,
         delay: 700,
-        translateX: -0.75,
         rotate: () => (deg += 6),
+        translateX: -0.75,
         easeing: 'spring(0, 90, 10, 10)',
         complete: tick,
       }))

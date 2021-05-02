@@ -9,7 +9,7 @@ class Routes extends Component {
       <div id="game_container">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/home" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route path="/rules" component={HowTo} />
         </Switch>
       </div>

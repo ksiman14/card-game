@@ -31,6 +31,10 @@ class Home extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearCards();
+  }
+
   handleClick() {
     this.props.clearCards();
     this.props.clearStack();

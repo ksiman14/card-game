@@ -207,6 +207,11 @@ button {
   margin: 20px;
 }
 
+#won > img {
+  height: 10%;
+  margin: 20px;
+}
+
 #lost > button {
   background-color: #275dad;
   color: #ffffff;

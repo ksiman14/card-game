@@ -35,7 +35,6 @@ const Navbar = (props) => {
 
 const mapState = (state) => ({
   color: state.color,
-  currentStack: state.currentStack,
 });
 
 const mapDispatch = (dispatch) => ({
