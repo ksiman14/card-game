@@ -60,7 +60,7 @@ const Clock = (props) => {
           <text id="king">K</text>
         </g>
         <g className="hands" transform="translate(50 50)">
-          <g className="seconds" transform={`rotate(${deg})`}>
+          <g className="seconds">
             <path fill="black" d="M -0.4 10 h 0.8 v -45 h -0.8 z"></path>
             <circle
               strokeWidth="0.4"
