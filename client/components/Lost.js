@@ -8,7 +8,7 @@ const Lost = (props) => {
     () =>
       (animeRef.current = anime({
         targets: '#sad_face',
-        duration: 1000,
+        duration: 1500,
         loop: true,
         rotate: 360,
         elasticity: 600,

@@ -5,6 +5,7 @@ import { setCurrentCard } from '../store/currentCard';
 import { clearStack } from '../store/currentStack';
 import CardRow from './CardRow';
 import Lost from './Lost';
+import Won from './Won';
 
 class Home extends Component {
   constructor(props) {
@@ -46,14 +47,7 @@ class Home extends Component {
       if (hand.find((card) => card.hidden)) {
         return <Lost handleClick={this.handleClick} />;
       } else {
-        return (
-          <div id="won">
-            <p>Congratulations, you won!</p>
-            <button type="button" onClick={this.handleClick}>
-              Play Again!
-            </button>
-          </div>
-        );
+        return <Won handleClick={this.handleClick} />;
       }
     }
     return (
