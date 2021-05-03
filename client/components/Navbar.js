@@ -18,7 +18,7 @@ const Navbar = (props) => {
   return (
     <div id="nav" className={props.color}>
       <h1>Clock Solitaire</h1>
-      <Clock />
+      <Clock color={props.color} />
       <div id="links">
         <Link to="/">Home</Link>
         <Link to="/rules">How Do I Play?</Link>
